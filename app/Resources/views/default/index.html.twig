@@ -11,14 +11,14 @@
     <div class="am-g">
         <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
             {{ include('pieces/adsense.html.twig') }}
-            <br>
+            <div class="am-alert am-hide" id="msg"></div>
             <div class="am-form am-text-center">
                 <input type="text" name="" id="url" placeholder="你的网址" value="">
                 <br>
                 <input type="text" name="" id="url" placeholder="你的自定义地址" value="">
                 <br />
                 <div class="am-cf">
-                    <button name="" class="am-btn am-btn-primary">生成</button>
+                    <button id="create" class="am-btn am-btn-primary">生成</button>
                     <a href="{{ path('fos_user_security_login') }}" class="am-btn am-btn-default">管理</a>
                     <a href="#" class="am-btn am-btn-warning">小插件</a>
                 </div>
@@ -29,4 +29,13 @@
             <p>© 2015 <a href="http://www.domyself.me/" target="_blank">ETY001</a>.</p>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    var base_url = "{{ baseUrl }}";
+    var post_url = "{{ path('url') }}";
+    var get_url = "{{ path('jump') }}";
+</script>
+<script src="{{ asset('assets/js/custom/default.js') }}"></script>
 {% endblock %}

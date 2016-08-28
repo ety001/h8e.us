@@ -14,12 +14,13 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $baseUrl = $request->getScheme().'://'.$request->getHost();
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', []);
+        return $this->render('default/index.html.twig', ['baseUrl'=>$baseUrl]);
     }
 
     /**
-     * @Route("/jump/{code}", name="jump")
+     * @Route("/u/{code}", name="jump")
      */
     public function jumpAction($code='', Request $request)
     {

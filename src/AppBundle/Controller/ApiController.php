@@ -67,8 +67,8 @@ class ApiController extends Controller
 
     private function httpHeaderCheck($url)
     {
-        $new_url = parse_url($url);
-        if(!isset($new_url['scheme']))
+        $newUrl = parse_url($url);
+        if(!isset($newUrl['scheme']))
         {
             return 'http://'.$url;
         }
