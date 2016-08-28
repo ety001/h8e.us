@@ -47,10 +47,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/plugins", name="plugins")
      */
-    public function adminAction()
+    public function pluginsAction()
     {
-        echo 1;die();
+        
     }
 }

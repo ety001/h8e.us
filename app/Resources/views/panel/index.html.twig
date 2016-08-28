@@ -30,12 +30,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% block javascripts %}
-<script>
-    var base_url = "{{ baseUrl }}";
-    var post_url = "{{ path('url') }}";
-    var get_url = "{{ path('jump') }}";
-</script>
-<script src="{{ asset('assets/js/custom/default.js') }}"></script>
-{% endblock %}

@@ -8,7 +8,7 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="renderer" content="webkit">
         <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <link rel="alternate icon" type="image/png" href="{{ asset('favicon.ico') }}">
+        <link rel="alternate icon" type="image/png" href="{{ asset('favicon.png') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/amazeui.min.css') }}"/>
         <style>
             .header {
@@ -30,5 +30,10 @@
         <script type="text/javascript" src="{{ asset('assets/js/jquery-3.1.0.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/amazeui.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
+        {% if app.environment == 'prod' %}
+        <div class="am-hide">
+            <script src="https://s11.cnzz.com/z_stat.php?id=1259886021&web_id=1259886021" language="JavaScript"></script>
+        </div>
+        {% endif %}
     </body>
 </html>
