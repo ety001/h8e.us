@@ -45,4 +45,12 @@ class DefaultController extends Controller
             return $this->redirectToRoute('homepage', array('from' => 'jump'));
         }
     }
+
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function adminAction()
+    {
+        echo 1;die();
+    }
 }
