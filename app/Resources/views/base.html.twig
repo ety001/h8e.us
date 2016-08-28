@@ -10,6 +10,19 @@
         <meta http-equiv="Cache-Control" content="no-siteapp" />
         <link rel="alternate icon" type="image/png" href="{{ asset('favicon.ico') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/amazeui.min.css') }}"/>
+        <style>
+            .header {
+                text-align: center;
+            }
+            .header h1 {
+                font-size: 200%;
+                color: #333;
+                margin-top: 30px;
+            }
+            .header p {
+                font-size: 14px;
+            }
+        </style>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>

@@ -10,19 +10,8 @@
     </div>
     <div class="am-g">
         <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-            <div>
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- h8e -->
-                <ins class="adsbygoogle"
-                     style="display:block;"
-                     data-ad-client="ca-pub-7536831447654223"
-                     data-ad-slot="7198174973"
-                     data-ad-format="auto"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <br />
-            </div>
+            {{ include('pieces/adsense.html.twig') }}
+            <br>
             <div class="am-form am-text-center">
                 <input type="text" name="" id="url" placeholder="你的网址" value="">
                 <br>
@@ -30,41 +19,14 @@
                 <br />
                 <div class="am-cf">
                     <button name="" class="am-btn am-btn-primary">生成</button>
-                    <button name="" class="am-btn am-btn-default">管理</button>
+                    <a href="{{ path('fos_user_security_login') }}" class="am-btn am-btn-default">管理</a>
+                    <a href="#" class="am-btn am-btn-warning">小插件</a>
                 </div>
-                <a href="#" style="display:block;margin-top:10px;">小插件</a>
             </div>
-            <div>
-                <br />
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- h8e -->
-                <ins class="adsbygoogle"
-                     style="display:block;"
-                     data-ad-client="ca-pub-7536831447654223"
-                     data-ad-slot="7198174973"
-                     data-ad-format="auto"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+            <br><br>
+            {{ include('pieces/adsense.html.twig') }}
             <hr>
             <p>© 2015 <a href="http://www.domyself.me/" target="_blank">ETY001</a>.</p>
         </div>
     </div>
-{% endblock %}
-
-{% block stylesheets %}
-<style>
-    .header {
-        text-align: center;
-    }
-    .header h1 {
-        font-size: 200%;
-        color: #333;
-        margin-top: 30px;
-    }
-    .header p {
-        font-size: 14px;
-    }
-</style>
 {% endblock %}

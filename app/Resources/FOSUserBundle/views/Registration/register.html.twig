@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="header">
+        <div class="am-g">
+            <h1>胡八一&nbsp;短网址</h1>
+            <p>Make Your URL Short</p>
+        </div>
+        <hr />
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+            {{ include('pieces/adsense.html.twig') }}
+            <br>
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                {{ form_widget(form) }}
+                <div>
+                    <input type="submit" value="{{ 'registration.submit'|trans }}" />
+                </div>
+            {{ form_end(form) }}
+            <br><br>
+            {{ include('pieces/adsense.html.twig') }}
+        </div>
+    </div>
+{% endblock body %}

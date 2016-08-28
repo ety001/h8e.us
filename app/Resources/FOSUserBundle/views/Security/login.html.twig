@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="header">
+        <div class="am-g">
+            <h1>胡八一&nbsp;短网址</h1>
+            <p>Make Your URL Short</p>
+        </div>
+        <hr />
+    </div>
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="am-g">
+        <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+            {{ include('pieces/adsense.html.twig') }}
+            <br>
+            <form class="am-form" action="{{ path("fos_user_security_check") }}" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                <div class="am-form-group">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="用户名">
+                </div>
+
+                <div class="am-form-group">
+                    <input type="password" id="password" name="_password" required="required" placeholder="密码">
+                </div>
+
+                <div class="am-checkbox">
+                    <label>
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"> 记住我
+                    </label>
+                </div>
+
+                <p>
+                    <button type="submit" id="_submit" name="_submit" class="am-btn am-btn-success">登录</button>
+                    <a href="{{ path('fos_user_registration_register') }}" class="am-btn am-btn-warning">注册</a>
+                    <a href="{{ path('homepage') }}" class="am-btn am-btn-secondary">返回</a>
+                </p>
+
+            </form>
+            <br><br>
+            {{ include('pieces/adsense.html.twig') }}
+        </div>
+    </div>
+{% endblock body %}
