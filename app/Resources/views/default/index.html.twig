@@ -2,10 +2,17 @@
 
 {% block body %}
     <div class="header">
+        {% if user %}
+        <div class="am-g">
+            <h1>胡八一&nbsp;短网址</h1>
+            <p>Login as: <a href="{{ path('panel') }}">{{ user.username }}</a></p>
+        </div>
+        {% else %}
         <div class="am-g">
             <h1>胡八一&nbsp;短网址</h1>
             <p>Make Your URL Short</p>
         </div>
+        {% endif %}
         <hr />
     </div>
     <div class="am-g">
@@ -13,9 +20,9 @@
             {{ include('pieces/adsense.html.twig') }}
             <div class="am-alert am-hide" id="msg"></div>
             <div class="am-form am-text-center">
-                <input type="text" name="" id="url" placeholder="你的网址" value="">
+                <input type="text" id="url" placeholder="你的网址" value="">
                 <br>
-                <input type="text" name="" id="url" placeholder="你的自定义地址" value="">
+                <input type="text" id="code" placeholder="你的自定义地址" value="">
                 <br />
                 <div class="am-cf">
                     <button id="create" class="am-btn am-btn-primary">生成</button>
@@ -33,9 +40,9 @@
 
 {% block javascripts %}
 <script>
-    var base_url = "{{ baseUrl }}";
     var post_url = "{{ path('url') }}";
-    var get_url = "{{ path('jump') }}";
+    var get_url = "{{ absolute_url(path('jump')) }}";
 </script>
+<script src="{{ asset('assets/js/clipboard.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom/default.js') }}"></script>
 {% endblock %}

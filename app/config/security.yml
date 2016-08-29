@@ -26,7 +26,9 @@ security:
                 always_use_default_target_path: false
                 default_target_path:            /m/panel
 
-            logout:       true
+            logout:
+                path:   /m/logout
+                target: /
             anonymous:    true
 
     access_control:
@@ -35,3 +37,4 @@ security:
         - { path: ^/m/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/m/admin, role: ROLE_ADMIN }
         - { path: ^/m/panel, roles: ROLE_USER }
+        - { path: ^/m/del, roles: ROLE_USER }

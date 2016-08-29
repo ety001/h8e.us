@@ -4,7 +4,13 @@
     <div class="header">
         <div class="am-g">
             <h1>胡八一&nbsp;短网址</h1>
-            <p>Make Your URL Short</p>
+            <p>Login as: <a href="{{ path('panel') }}">{{ user.username }}</a></p>
+        </div>
+        <div class="am-g">
+            <div class="am-u-lg-6 am-u-lg-centered">
+                <a href="{{ path('homepage') }}" class="am-btn am-btn-primary am-radius">首页</a>
+                <a href="{{ path('fos_user_security_logout') }}" class="am-btn am-btn-default am-radius">退出</a>
+            </div>
         </div>
         <hr />
     </div>
@@ -12,7 +18,7 @@
         <div class="am-u-lg-12 am-u-md-12 am-u-sm-centered">
             {{ include('pieces/adsense.html.twig') }}
             
-            {% if(links) %}
+            {% if(linkCount>0) %}
             <table class="am-table am-table-striped am-table-hover">
                 <thead>
                     <tr>
@@ -20,6 +26,7 @@
                         <th>缩短后</th>
                         <th>访问量</th>
                         <th>创建时间</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +36,7 @@
                         <td>{{ baseUrl }}{{ link.code }}</td>
                         <td>{{ link.counter }}</td>
                         <td>{{ link.createdAt|date('Y-m-d H:i:s') }}</td>
+                        <td><a href="{{ path('delUrl', {'linkId':link.id}) }}">删除</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -37,7 +45,7 @@
             {{ knp_pagination_render(links) }}
 
             {% else %}
-
+            <p>暂时还没有数据，快去<a href="{{path('homepage')}}">首页</a>添加吧 ~ </p>
             {% endif %}
             <br><br>
             {{ include('pieces/adsense.html.twig') }}

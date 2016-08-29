@@ -8,7 +8,16 @@ $(function(){
             $.AMUI.progress.done();
             $('#create').button('reset');
             if(res.status==true) {
-                $('#msg').html('<p>'+res.msg+', '+base_url+get_url+'/'+res.data.code+'</p>').removeClass('am-alert-warning').removeClass('am-hide').addClass('am-alert-success');
+                var share_url = get_url+res.data.code;
+                $('#msg').html('<p>'+res.msg+', '+share_url+'&nbsp;<button id="clip" class="am-btn am-btn-primary am-btn-xs">复制</button></p>').removeClass('am-alert-warning').removeClass('am-hide').addClass('am-alert-success');
+                $('#clip').attr('data-clipboard-text', share_url);
+                var clip = new Clipboard('#clip');
+                clip.on('success', function(e) {
+                    $('#clip').html('复制成功');
+                });
+                clip.on('error', function(e) {
+                    $('#clip').html('复制失败');
+                });
                 $('#url').val('');
                 $('#code').val('');
             } else if(res.status==false) {

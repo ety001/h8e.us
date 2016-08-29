@@ -14,9 +14,10 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $user = $this->getUser();
         $baseUrl = $request->getScheme().'://'.$request->getHost();
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', ['baseUrl'=>$baseUrl]);
+        return $this->render('default/index.html.twig', ['baseUrl'=>$baseUrl, 'user'=>$user]);
     }
 
     /**
