@@ -20,7 +20,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/u/{code}", name="jump")
+     * @Route("/{code}", name="jump", requirements={"code": "^[a-z0-9-_]+$"})
      */
     public function jumpAction($code='', Request $request)
     {
@@ -47,7 +47,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/plugins", name="plugins")
+     * @Route("/m/plugins", name="plugins")
      */
     public function pluginsAction()
     {

@@ -10,4 +10,45 @@ namespace AppBundle\Repository;
  */
 class LinkRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getLinks($params, $order='',$paginator=false, $currentPage=false, $limit=false)
+    {
+        $findConditions = [];
+        $where = ' where 1=1 ';
+        $sql = 'SELECT al FROM AppBundle:Link al ';
+        $em = $this->getEntityManager();
+
+        if(isset($params['user'])&&$params['user'])
+        {
+            $findConditions['user'] = $params['user'];
+            $where .= ' and al.user = :user';
+        }
+
+        $sql .= $where;
+
+        if($order)
+        {
+            $sql .= ' order by '.$order;
+        }
+
+        $query = $em->createQuery($sql);
+
+        if(!empty($findConditions))
+        {
+            $query->setParameters($findConditions);
+        }
+
+        if($paginator!==false)
+        {
+            $pagination = $paginator->paginate(
+                $query,
+                $currentPage/*page number*/,
+                $limit/*limit per page*/
+            );
+            return $pagination;
+        }
+        else
+        {
+            return $query->getResult();
+        }
+    }
 }

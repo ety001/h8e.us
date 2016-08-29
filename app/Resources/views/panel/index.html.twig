@@ -9,20 +9,36 @@
         <hr />
     </div>
     <div class="am-g">
-        <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+        <div class="am-u-lg-12 am-u-md-12 am-u-sm-centered">
             {{ include('pieces/adsense.html.twig') }}
-            <div class="am-alert am-hide" id="msg"></div>
-            <div class="am-form am-text-center">
-                <input type="text" name="" id="url" placeholder="你的网址" value="">
-                <br>
-                <input type="text" name="" id="url" placeholder="你的自定义地址" value="">
-                <br />
-                <div class="am-cf">
-                    <button id="create" class="am-btn am-btn-primary">生成</button>
-                    <a href="{{ path('panel') }}" class="am-btn am-btn-default">管理</a>
-                    <a href="{{ path('plugins') }}" class="am-btn am-btn-warning">小插件</a>
-                </div>
-            </div>
+            
+            {% if(links) %}
+            <table class="am-table am-table-striped am-table-hover">
+                <thead>
+                    <tr>
+                        <th>网址</th>
+                        <th>缩短后</th>
+                        <th>访问量</th>
+                        <th>创建时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for link in links %}
+                    <tr>
+                        <td>{{ link.url }}</td>
+                        <td>{{ baseUrl }}{{ link.code }}</td>
+                        <td>{{ link.counter }}</td>
+                        <td>{{ link.createdAt|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {{ knp_pagination_render(links) }}
+
+            {% else %}
+
+            {% endif %}
             <br><br>
             {{ include('pieces/adsense.html.twig') }}
             <hr>

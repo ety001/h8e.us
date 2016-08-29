@@ -33,7 +33,8 @@
         "jms/translation-bundle": "^1.3",
         "jms/di-extra-bundle": "^1.7",
         "twig/extensions": "^1.3",
-        "paragonie/random_compat": "^2.0"
+        "paragonie/random_compat": "^2.0",
+        "knplabs/knp-paginator-bundle": "^2.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

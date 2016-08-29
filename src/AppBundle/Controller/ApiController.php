@@ -24,6 +24,13 @@ class ApiController extends Controller
         $code = $request->request->get('code') ? $request->request->get('code') : bin2hex(random_bytes(3));
         $url = $request->request->get('url');
 
+        $code = strtolower($code);
+        if(!preg_match('/^[a-z0-9_-]+$/i', $code))
+        {
+            $msg['msg'] = '自定义名只能包含数字、小写字母、中划线和下划线';
+            return $this->json($msg);
+        }
+
         if($url=='' && !$this->checkUrl($url))
         {
             $msg['msg'] = 'URL不能为空或者URL不合规';
