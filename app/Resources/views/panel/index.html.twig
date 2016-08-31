@@ -10,10 +10,10 @@
             <table class="am-table am-table-striped am-table-hover">
                 <thead>
                     <tr>
-                        <th>网址</th>
-                        <th>缩短后</th>
-                        <th>访问量</th>
-                        <th>创建时间</th>
+                        <th>{{ 'portal.url'|trans }}</th>
+                        <th>{{ 'portal.shorturl'|trans }}</th>
+                        <th>{{ 'portal.visitnum'|trans }}</th>
+                        <th>{{ 'portal.createdat'|trans }}</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -24,7 +24,7 @@
                         <td>{{ baseUrl }}{{ link.code }}</td>
                         <td>{{ link.counter }}</td>
                         <td>{{ link.createdAt|date('Y-m-d H:i:s') }}</td>
-                        <td><a href="{{ path('delUrl', {'linkId':link.id}) }}">删除</a></td>
+                        <td><a href="{{ path('delUrl', {'linkId':link.id}) }}">{{ 'portal.delete'|trans }}</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -33,7 +33,7 @@
             {{ knp_pagination_render(links) }}
 
             {% else %}
-            <p>暂时还没有数据，快去<a href="{{path('homepage')}}">首页</a>添加吧 ~ </p>
+            <p><a href="{{path('homepage')}}">{{ 'portal.nodata'|trans }}</a></p>
             {% endif %}
             <br><br>
             {{ include('pieces/adsense.html.twig') }}

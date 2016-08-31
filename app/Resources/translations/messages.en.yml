@@ -6,3 +6,16 @@ global:
     generate: Generate
     portal: Portal
     plugin: Plugin
+
+portal:
+    url: URL
+    shorturl: 'Shorted URL'
+    visitnum: 'Visit Count'
+    createdat: 'Created At'
+    delete: Delete
+    nodata: 'Have no data now, Go to generate.'
+pagination:
+    first: First
+    prev: Prev
+    next: Next
+    last: Last

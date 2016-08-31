@@ -6,3 +6,15 @@ global:
     generate: 生成
     portal: 管理
     plugin: 插件
+portal:
+    url: 原始网址
+    shorturl: 缩短后网址
+    visitnum: 访问量
+    createdat: 创建时间
+    delete: 删除
+    nodata: '还没有数据，去创建'
+pagination:
+    first: 第一页
+    prev: 上一页
+    next: 下一页
+    last: 最末页
