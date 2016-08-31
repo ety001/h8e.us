@@ -1,0 +1,10 @@
+security:
+    login:
+        username: 用户名
+        password: 密码
+        submit: 登录
+        remember_me: 记住我
+        register: 注册
+        back: 返回
+register:
+    submit: 提交

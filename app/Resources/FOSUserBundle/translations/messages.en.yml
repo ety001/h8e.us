@@ -1,0 +1,10 @@
+security:
+    login:
+        username: Username
+        password: Password
+        submit: Login
+        remember_me: 'Remember me'
+        register: Register
+        back: Back
+register:
+    submit: Submit

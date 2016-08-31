@@ -15,30 +15,30 @@
             <br>
             {% if error %}
                 <div class="am-alert am-alert-warning" id="msg">
-                    <p>用户名或密码有误</p>
+                    <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
                 </div>
             {% endif %}
             <form class="am-form" action="{{ path("fos_user_security_check") }}" method="post">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
                 <div class="am-form-group">
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="用户名">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}">
                 </div>
 
                 <div class="am-form-group">
-                    <input type="password" id="password" name="_password" required="required" placeholder="密码">
+                    <input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}">
                 </div>
 
                 <div class="am-checkbox">
                     <label>
-                        <input type="checkbox" checked="checked" id="remember_me" name="_remember_me" value="on"> 记住我
+                        <input type="checkbox" checked="checked" id="remember_me" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans }}
                     </label>
                 </div>
 
                 <p>
-                    <button type="submit" id="_submit" name="_submit" class="am-btn am-btn-success">登录</button>
-                    <a href="{{ path('fos_user_registration_register') }}" class="am-btn am-btn-warning">注册</a>
-                    <a href="{{ path('homepage') }}" class="am-btn am-btn-secondary">返回</a>
+                    <button type="submit" id="_submit" name="_submit" class="am-btn am-btn-success">{{ 'security.login.submit'|trans }}</button>
+                    <a href="{{ path('fos_user_registration_register') }}" class="am-btn am-btn-warning">{{ 'security.login.register'|trans }}</a>
+                    <a href="{{ path('homepage') }}" class="am-btn am-btn-secondary">{{ 'security.login.back'|trans }}</a>
                 </p>
 
             </form>
