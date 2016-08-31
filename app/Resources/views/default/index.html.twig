@@ -1,33 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="header">
-        {% if user %}
-        <div class="am-g">
-            <h1>胡八一&nbsp;短网址</h1>
-            <p>Login as: <a href="{{ path('panel') }}">{{ user.username }}</a></p>
-        </div>
-        {% else %}
-        <div class="am-g">
-            <h1>胡八一&nbsp;短网址</h1>
-            <p>Make Your URL Short</p>
-        </div>
-        {% endif %}
-        <hr />
-    </div>
+    {{ include('pieces/header.html.twig') }}
     <div class="am-g">
         <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
             {{ include('pieces/adsense.html.twig') }}
             <div class="am-alert am-hide" id="msg"></div>
             <div class="am-form am-text-center">
-                <input type="text" id="url" placeholder="你的网址" value="">
+                <input type="text" id="url" placeholder="{{ 'global.url'|trans }}" value="">
                 <br>
-                <input type="text" id="code" placeholder="你的自定义地址" value="">
+                <input type="text" id="code" placeholder="{{ 'global.code'|trans }}" value="">
                 <br />
                 <div class="am-cf">
-                    <button id="create" class="am-btn am-btn-primary">生成</button>
-                    <a href="{{ path('panel') }}" class="am-btn am-btn-default">管理</a>
-                    <a href="{{ path('plugins') }}" class="am-btn am-btn-warning">小插件</a>
+                    <button id="create" class="am-btn am-btn-primary">{{ 'global.generate'|trans }}</button>
+                    <a href="{{ path('panel') }}" class="am-btn am-btn-default">{{ 'global.portal'|trans }}</a>
+                    <a href="{{ path('plugins') }}" class="am-btn am-btn-warning">{{ 'global.plugin'|trans }}</a>
                 </div>
             </div>
             <br><br>

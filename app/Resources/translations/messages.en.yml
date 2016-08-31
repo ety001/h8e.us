@@ -1,2 +1,8 @@
 global:
     back: Back
+    sitetitle: '胡八一 短网址'
+    url: 'Your URL'
+    code: 'Your Custom Code (Optional)'
+    generate: Generate
+    portal: Portal
+    plugin: Plugin
