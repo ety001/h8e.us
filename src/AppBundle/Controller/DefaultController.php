@@ -52,6 +52,17 @@ class DefaultController extends Controller
      */
     public function pluginsAction()
     {
-        
+        $user = $this->getUser();
+        if($user)
+        {
+            $userId = $user->getId();
+            $userHash = md5($user->getPassword());
+        }
+        else
+        {
+            $userId = $userHash = null;
+        }
+        $data = ['user'=>$user,'userId'=>$userId, 'userHash'=>$userHash];
+        return $this->render('default/plugins.html.twig', $data);
     }
 }

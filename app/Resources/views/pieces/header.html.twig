@@ -1,7 +1,7 @@
 <div class="header">
     {% if user is defined and user is not empty %}
     <div class="am-g">
-        <h1>{{ 'global.sitetitle'|trans }}</h1>
+        <h1><a href="{{path('homepage')}}">{{ 'global.sitetitle'|trans }}</a></h1>
         <p>Login as: <a href="{{ path('panel') }}">{{ user.username }}</a></p>
     </div>
     <div class="am-g">
@@ -12,7 +12,7 @@
     </div>
     {% else %}
     <div class="am-g">
-        <h1>{{ 'global.sitetitle'|trans }}</h1>
+        <h1><a href="{{path('homepage')}}">{{ 'global.sitetitle'|trans }}</a></h1>
         <p>Make Your URL Short</p>
     </div>
     {% endif %}

@@ -5,10 +5,18 @@
     <div class="am-g">
         <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
             {{ include('pieces/adsense.html.twig') }}
-            <p>
-                <a class="am-btn am-btn-default am-btn-xl" href="javascript:var src='{{ absolute_url(asset('assets/js/o.js')) }}';var node=document.createElement('script');node.src = src;document.head.appendChild(node);">拖动这个按钮到你的书签栏</a>
-            </p>
             <br><br>
+            <p class="am-text-center">
+                <b class="am-text-warning">拖动下面这个按钮到你的书签栏，</b>当你想要生成某个网页的短链接的时候，直接点击书签栏的这个书签即可。
+            </p>
+            <p class="am-text-center">
+                <a class="am-btn am-btn-warning am-btn-xl" href="javascript:var src='{{ absolute_url(asset('assets/js/oo.js')) }}',h8euserid='{{userId}}',h8euserhash='{{userHash}}',h8eapiurl='{{absolute_url(path('jsonpUrl'))}}',h8ebaseurl='{{absolute_url(path('homepage'))}}';node=document.createElement('script');node.id='h8ejs';node.src = src;document.head.appendChild(node);">胡八一 短网址</a>
+            </p>
+            <p class="am-text-center">PS: 如果你希望生成的链接可管理，请先<a href="{{ path('fos_user_security_login') }}">登录</a>，然后再拖动该按钮到书签栏。</p>
+            <p class="am-text-center">
+                <a class="am-btn am-btn-primary" href="{{ path('homepage') }}">返回</a>
+            </p>
+            <br><br><br>
             {{ include('pieces/adsense.html.twig') }}
             <hr>
             <p>© 2015 <a href="http://www.domyself.me/" target="_blank">ETY001</a>.</p>

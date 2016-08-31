@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Link;
 use FOS\UserBundle\Model\UserInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class ApiController extends Controller
 {
@@ -15,16 +16,36 @@ class ApiController extends Controller
      */
     public function urlAction(Request $request)
     {
+        $code = $request->request->get('code') ? $request->request->get('code') : bin2hex(random_bytes(3));
+        $url = $request->request->get('url');
+        $userid = $request->request->get('userid');
+        $userhash = $request->request->get('userhash');
+        $msg = $this->createUrl($url, $code, $userid, $userhash);
+        return $msg;
+    }
+
+    /**
+     * @Route("/api/url/jsonp", name="jsonpUrl")
+     */
+    public function jsonpUrlAction(Request $request)
+    {
+        $code = $request->query->get('code') ? $request->query->get('code') : bin2hex(random_bytes(3));
+        $url = $request->query->get('url');
+        $userid = $request->query->get('userid');
+        $userhash = $request->query->get('userhash');
+        $msg = $this->createUrl($url, $code, $userid, $userhash);
+        return new Response('h8ecallback('.$msg->getContent().');');
+    }
+
+    private function createUrl($url=null, $code=null, $userid=null, $userhash=null)
+    {
+        $code = strtolower($code);
         $msg =[
             'status' => false,
             'msg' => '',
             'data' => []
         ];
 
-        $code = $request->request->get('code') ? $request->request->get('code') : bin2hex(random_bytes(3));
-        $url = $request->request->get('url');
-
-        $code = strtolower($code);
         if(!preg_match('/^[a-z0-9_-]+$/i', $code))
         {
             $msg['msg'] = '自定义名只能包含数字、小写字母、中划线和下划线';
@@ -48,10 +69,23 @@ class ApiController extends Controller
 
         $user = $this->getUser();
 
+        if(!$user && $userid && $userhash)
+        {
+            $em = $this->getDoctrine()->getManager();
+            $userDao = $em->getRepository('AppBundle:User')
+                    ->find($userid);
+            if(md5($userDao->getPassword()) == $userhash)
+            {
+                $user = $userDao;
+            }
+        }
+
         $link = new Link();
-        if (is_object($user) && $user instanceof UserInterface) {
+        if (is_object($user) && $user instanceof UserInterface)
+        {
             $link->setUser($user);
         }
+
         $link->setUrl($this->httpHeaderCheck($url));
         $link->setCode($code);
         $em->persist($link);
