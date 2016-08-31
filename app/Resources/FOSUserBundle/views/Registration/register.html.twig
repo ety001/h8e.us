@@ -7,7 +7,7 @@
         <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
             {{ include('pieces/adsense.html.twig') }}
             <br>
-            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'am-form'}}) }}
                 {{ form_widget(form) }}
                 <p>
                     <button type="submit" id="_submit" name="_submit" class="am-btn am-btn-success">{{ 'register.submit'|trans }}</button>
