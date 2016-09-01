@@ -1,7 +1,7 @@
 (function(){
 var h8e_style = "\
     .h8e_modal {\
-        z-index: 999;\
+        z-index: 2147483646;\
         position: fixed;\
         top: 50px;\
         left: 30%;\
@@ -95,14 +95,14 @@ var h8e_style = "\
         modal.appendChild(style_dom);
 
         var h8e_title = cEl('h1');
-        h8e_title.innerHTML = '<a href="http://h8e.us">胡八一 短网址</a>';
+        h8e_title.innerHTML = '<a href="http://h8e.us">\u80E1\u516B\u4E00\20\u77ED\u7F51\u5740</a>';
         h8e_title.className = 'h8e_title';
         modal.appendChild(h8e_title);
 
         var br = cEl('br');
 
         var url_txt = cEl('div');
-        url_txt.innerHTML = '要缩短的网址：';
+        url_txt.innerHTML = '\u8981\u7f29\u77ed\u7684\u7f51\u5740:';
         modal.appendChild(url_txt);
         
         var url = cEl('input');
@@ -113,7 +113,7 @@ var h8e_style = "\
 
         var code_txt = cEl('div');
         code_txt.className = 'h8e_title';
-        code_txt.innerHTML = '自定义地址：';
+        code_txt.innerHTML = '\u81EA\u5B9A\u4E49\u5730\u5740:';
         modal.appendChild(code_txt);
 
         var code = cEl('input');
@@ -130,7 +130,7 @@ var h8e_style = "\
 
         var submit = cEl('button');
         submit.id = 'h8e_submit';
-        submit.innerHTML = '提交';
+        submit.innerHTML = '\u63D0\u4EA4';
         submit.className = 'h8e_btn h8e_btn_primary';
         submit.onclick = function(){
             var code_val = code.value;
@@ -141,7 +141,7 @@ var h8e_style = "\
         modal.appendChild(submit);
 
         var close = cEl('button');
-        close.innerHTML = '关闭';
+        close.innerHTML = '\u5173\u95ED';
         close.className = 'h8e_btn';
         close.onclick = function() {
             document.body.removeChild(document.getElementById('h8e_modal'));
@@ -207,7 +207,7 @@ var h8e_style = "\
             alert_box.style = 'display:block;';
             alert_box.className = 'h8e_alert h8e_alert_warning';
         }
-        document.getElementById('h8e_submit').innerHTML = '提交';
+        document.getElementById('h8e_submit').innerHTML = '\u63D0\u4EA4';
         //console.log(res);
     }
 
